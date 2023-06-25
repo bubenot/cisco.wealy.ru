@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cisco IOS Commands - Admin - Add Table</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+	<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+	<center>
+		<h1>Add Table</h1>
+	</center>
+	<center>
+		{{ message }}
+		<form method="POST">
+			Название таблицы: <input type="text" name="tableName" placeholder="Название таблицы" required> <br>
+			Выберите раздел: <select name="section" required>
+				<option disabled>Выберите из списка</option>
+				{% for i in section %}
+					<option value="{{ i['id_section'] }}" {% if i['id_section']==data1['id_section'] %} selected {% endif %}>{{ i['id_section'] }} - {{ i['name'] }}</option>
+				{% endfor %}
+			</select> <br>
+			Выберите подраздел: <select name="subsection" required>
+				<option disabled>Выберите из списка</option>
+				<option value="0">Without subsection</option>
+				{% for i in subsection %}
+					<option value="{{ i['id_subsection'] }}" {% if i['id_subsection']==data1['id_subsection'] %} selected {% endif %}>{{ i['id_subsection'] }} - {{ i['name'] }}</option>
+				{% endfor %}
+			</select> <br>
+			Столбцы по умолчанию: <input type="checkbox" name="defaultColumns" checked> <br>
+			Столбцы (если не выбраны по умолчанию)<input type="text" name="columns" placeholder="['column1', 'column2']"> <br>
+			<input type="submit" name="add" value="Добавить"> 
+		</form>
+	</center>
+	<center><h4><a href="/admin">Вернуться назад</a></h4></center>
+</body>
+</html>

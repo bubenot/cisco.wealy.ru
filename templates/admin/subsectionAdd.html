@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cisco IOS Commands - Admin - Add Subsection</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+	<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+	<center>
+		<h1>Add Subsection</h1>
+	</center>
+	<center>
+		{{ message }}
+		<form method="POST">
+			Укажите раздел: <select name="id_section" required>
+				<option disabled selected value="0">Выберите из списка</option>
+				{% for i in section %}
+					<option value="{{ i['id_section'] }}">{{ i['id_section'] }} - {{ i['name'] }}</option>
+				{% endfor %}
+			</select> <br>
+			Укажите название (En): <input type="text" name="name" placeholder="Static Routing" requred> <br>
+			Укажите название (Ru): <input type="text" name="name_ru" placeholder="Статическая маршрутизация" required> <br>
+			Укажите href: <input type="text" name="href" placeholder="/basic_cli" requred> <br>
+			<input type="submit" name="add" value="Добавить"> 
+		</form>
+	</center>
+	<center><h4><a href="/admin">Вернуться назад</a></h4></center>
+</body>
+</html>

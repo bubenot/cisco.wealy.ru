@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cisco IOS Commands - Admin - Add Command</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+	<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+	<center>
+		<h1>Add Command</h1>
+	</center>
+	<center>
+		{{ message }} <br>
+		<form method="POST">
+			Выберите таблицу: <select name="id_table" required>
+				<option disabled selected value="0">Выберите из списка</option>
+				{% for i in table %}
+					{% if i['subsection'] != None %}
+						<option value="{{ i['id_table'] }}" {% if i['id_table']==data1['id_table'] %} selected {% endif %}>{{ i['section'] }} - {{ i['subsection'] }} - {{ i['table_name'] }} - {{ i['id_table'] }}</option>
+					{% else %}
+						<option value="{{ i['id_table'] }}" {% if i['id_table']==data1['id_table'] %} selected {% endif %}>{{ i['section'] }} - {{ i['table_name'] }} - {{ i['id_table'] }}</option>
+					{% endif %}
+				{% endfor %}
+				</select> <br>
+			<br> ================ <br> <br>
+			{% for C in range(0, count_elements) %}
+			{% if C != 0 %}-------- <br>{%endif%}
+				Выберите режим: <select name="id_mode_{{C}}" required>
+					<option disabled selected value="-1" width=min>Выберите из списка</option>
+					{% for i in mode %}
+						<option value="{{ i['id_mode'] }}" {% if i['id_mode']==data1['id_mode'] %} selected {% endif %}>{{ i['name'] }}</option>
+					{% endfor %}
+				</select> <br>
+				Введите команду: <input type="text" name="command_{{C}}" placeholder="Команда" requred> <br>
+				Введите описание: <textarea name="description_{{C}}"></textarea> <br>
+			{% endfor %}
+			<br> <input type="submit" name="add" value="Добавить"> 
+		</form>
+	</center>
+	<center><h4><a href="/admin">Вернуться назад</a></h4></center>
+</body>
+</html>

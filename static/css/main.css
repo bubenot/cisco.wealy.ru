@@ -1,0 +1,12 @@
+#section {
+	margin-left: 15px;
+}
+a:visited {
+	color: #0000EE;
+}
+a:hover {
+	text-decoration: none;
+}
+#comments {
+	text-align: justify;
+}

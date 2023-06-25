@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cisco IOS Commands - Admin</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+	<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+	<center>
+		<h1>ЦиСкО-ЦеНтР</h1>
+	</center>
+	<center>
+		<a href="/admin/sectionAdd">Добавить раздел</a> <br>
+		<a href="/admin/subsectionAdd">Добавить подраздел</a> <br>
+		<a href="/admin/tableAdd">Добавить таблицу</a> <br>
+		<a href="/admin/commandAdd">Добавить записи к таблице</a> <br>
+		<form method="POST">
+			<input type="submit" value="Удалить текущую сессию" name="logout">
+		</form>
+	</center>
+
+	<center><h4><a href="../">Вернуться назад</a></h4></center>
+</body>
+</html>

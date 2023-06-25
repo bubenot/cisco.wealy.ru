@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+	<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+	<script src="{{ url_for('static', filename='js/yandex-metrica.js') }}"></script>
+	<center>
+		<h1> {{ title }} </h1>
+	</center>
+	{% if not section %}
+		Список разделов пуст
+	{% else %}
+		Выберите раздел:  <br>
+		<div id="section">
+			{% for s in section %}
+				<a href="{{ s['href'] }}">{{ s['name'] }}</a> - {{ s['name_ru'] }} <br>
+			{% endfor %}
+	{% endif %}
+	</div>
+	<center>
+		<img src="{{ url_for('static', filename='images/masks.jpg') }}">
+	</center>
+	<center>
+		<h6>
+			Created by wealy <br>
+			Flask and uWSGI is used <br>
+		</h6>
+	</center>
+</body>
+</html>
